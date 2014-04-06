@@ -1,0 +1,19 @@
+!!! 5
+%html
+  %head
+    %title Donut Ritual
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+
+  %body
+    - flash.each do |type, message|
+      %section.flash{ class: type }= message
+
+    %header
+      %nav
+
+    %main
+      = content_for?(:content) ? yield(:content) : yield
+
+    %footer
